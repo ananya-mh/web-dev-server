@@ -37,6 +37,7 @@ UserRoutes(app);
 CourseRoutes(app);
 ModuleRoutes(app);
 EnrollmentRoutes(app);
+AssignmentRoutes(app);
 QuizRoutes(app);
 Lab5(app);
 Hello(app);
