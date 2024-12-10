@@ -1,18 +1,31 @@
 import * as dao from "./dao.js";
-import Database from "../Database/index.js";
 export default function EnrollmentRoutes(app) {
-  app.get("/api/enrollments", (req, res) => {
-    const enrollments = dao.getAllEnrollments();
-    res.send(enrollments);
+  app.post("/api/courses/:userId/:courseId/enroll", (req, res) => {
+    const { courseId } = req.params;
+    const { userId } = req.params;
+    dao.enrollUserInCourse(userId, courseId);
+    res.sendStatus(200);
   });
-  app.delete("/api/enrollments/:enrollmentId", (req, res) => {
-    const { enrollmentId } = req.params;
-    dao.removeEnrollment(enrollmentId);
-    res.sendStatus(204);
+  app.delete("/api/courses/:userId/:courseId/unenroll", (req, res) => {
+    const { courseId } = req.params;
+    const { userId } = req.params;
+    dao.unenrollUserFromCourse(userId, courseId);
+    res.sendStatus(200);
   });
-  app.post("/api/enrollments/create", (req, res) => {
-    const enrollment = req.body;
-    const newEnrollment = dao.createEnrollment(enrollment);
-    res.json(newEnrollment);
+
+  app.get("/api/enrollments/:courseId", async (req, res) => {
+    const { courseId } = req.params;
+  
+    try {
+      // Call the function and await the result
+      const users = await dao.findUsersForCourse(courseId);
+  
+      // Respond with the array of users
+      res.json(users);
+    } catch (error) {
+      console.error("Error in GET /api/enrollments/:courseId:", error);
+      res.status(500).json({ error: "Failed to fetch users for course" });
+    }
   });
+  
 }
