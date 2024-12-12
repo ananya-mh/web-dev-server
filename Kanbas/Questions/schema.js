@@ -9,7 +9,7 @@ const questionSchema = mongoose.Schema(
     },
     points: Number,
     options: [String],
-    correctAnswer: Number,
+    correctAnswer: String,
   },
 
   { collection: "questions" }
