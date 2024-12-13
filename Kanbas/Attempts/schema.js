@@ -9,4 +9,4 @@ quiz: { type: mongoose.Schema.Types.ObjectId, ref: "QuizModel" },
 },
     { collection: "attempts" });
 
-export default historySchema;
+export default attemptsSchema;
