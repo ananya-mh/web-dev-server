@@ -6,4 +6,4 @@ export const createAttempt = (attempt) => {
 }
 
 export const findAttemptsByQuizId = (userId, quizId) => model.find({ user: userId, quiz: quizId });
-export const updateAttempt = (attemptId, attempt) => model.updateOne({ _id: historyId }, { $set: attempt });
+export const updateAttempts = (attemptId, attempt) => model.updateOne({ _id: attemptId }, { $set: attempt });

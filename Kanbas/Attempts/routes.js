@@ -35,14 +35,14 @@ export default function AttemptsRoutes(app) {
                 newAttempts.questions[i].correct = false
             }
         });
-        let currentAttempts = await dao.findHistoriesByQuizId(currentUser._id, qid)
+        let currentAttempts = await dao.findAttemptsByQuizId(currentUser._id, qid)
         if (currentAttempts.length > 0) {
             newAttempts.attempts = currentAttempts[0].attempts + 1
             let status = await dao.updateAttempts(currentAttempts[0]._id, newAttempts)
             res.json(status)
         } else {
           newAttempts.attempts = 1
-          newAttempts = await dao.createAttempts(newAttempts)
+          newAttempts = await dao.createAttempt(newAttempts)
           res.json(newAttempts)
         }
     }
