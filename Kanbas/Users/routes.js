@@ -88,7 +88,7 @@ export default function UserRoutes(app) {
   //enrollments
   const findCoursesForUser = async (req, res) => {
     const currentUser = req.session["currentUser"];
-    console.log("currentUser: ", currentUser);
+    // console.log("currentUser: ", currentUser);
     if (!currentUser) {
       res.sendStatus(401);
       return;
