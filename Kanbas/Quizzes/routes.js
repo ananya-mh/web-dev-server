@@ -44,6 +44,7 @@ const deleteQuiz = async (req, res) => {
 app.post("/api/courses/:cid/quizzes", createQuiz);
 app.get("/api/courses/:cid/quizzes", findQuizzesByCourseId);
 app.get("/api/quizzes/:qid", findQuizByQuizId);
+app.get("/api/courses/:cid/quizzes/:qid", findQuizByQuizId);
 app.get("/api/quizzes", findAllQuizzes);
 app.put("/api/quizzes/:qid", updateQuiz);
 app.delete("/api/quizzes/:qid", deleteQuiz)
