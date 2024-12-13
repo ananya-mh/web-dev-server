@@ -9,9 +9,9 @@ export function findModulesForCourse(courseId) {
  
 
 export function createModule(module) {
-  console.log("In create",module);
+  // console.log("In create",module);
   delete module._id
-  console.log("After delete: ", module);
+  // console.log("After delete: ", module);
   return model.create(module);
   // const newModule = { ...module, _id: Date.now().toString() };
   // Database.modules = [...Database.modules, newModule];

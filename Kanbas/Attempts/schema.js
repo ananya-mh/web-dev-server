@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const historySchema = new mongoose.Schema({
+const attemptsSchema = new mongoose.Schema({
 user: { type: mongoose.Schema.Types.ObjectId, ref: "UserModel" },
 quiz: { type: mongoose.Schema.Types.ObjectId, ref: "QuizModel" },
   points: Number,

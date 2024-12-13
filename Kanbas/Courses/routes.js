@@ -49,9 +49,9 @@ export default function CourseRoutes(app) {
       ...req.body,
       course: courseId,
     };
-    console.log("In routes: ",module);
+    // console.log("In routes: ",module);
     const newModule = await modulesDao.createModule(module);
-    console.log("In routes after create: ",newModule);
+    // console.log("In routes after create: ",newModule);
     res.send(newModule);
   });
 

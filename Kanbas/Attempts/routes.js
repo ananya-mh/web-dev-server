@@ -38,12 +38,12 @@ export default function AttemptsRoutes(app) {
         let currentAttempts = await dao.findHistoriesByQuizId(currentUser._id, qid)
         if (currentAttempts.length > 0) {
             newAttempts.attempts = currentAttempts[0].attempts + 1
-            let status = await dao.updateHistory(currentAttempts[0]._id, newAttempts)
+            let status = await dao.updateAttempts(currentAttempts[0]._id, newAttempts)
             res.json(status)
         } else {
           newAttempts.attempts = 1
-          newAttempts = await dao.createHistory(newHistory)
-          res.json(newHistory)
+          newAttempts = await dao.createAttempts(newAttempts)
+          res.json(newAttempts)
         }
     }
     const findAttemptsByQuizId = async (req, res) => {
@@ -57,6 +57,6 @@ export default function AttemptsRoutes(app) {
         res.json(quizzes);
     }
 
-    app.post("/api/attempts/:qid", updateHistory);
+    app.post("/api/attempts/:qid", updateAttempts);
     app.get("/api/attempts/:qid", findAttemptsByQuizId);
 }
