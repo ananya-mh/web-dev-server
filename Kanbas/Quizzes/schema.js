@@ -20,8 +20,7 @@ const quizSchema = new mongoose.Schema({
     dueDate: { type: String },
     availableFrom: { type: String },
     availableUntil: { type: String },
-    isTemporary: { type: Boolean, default: true },
-    questions: { type: Array, default: [] }
+    isTemporary: { type: Boolean, default: true }
 },
     { collection: "quizzes" });
 
